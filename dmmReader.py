@@ -13,8 +13,8 @@ context = ssl.create_default_context()
 
 initial_voltage = 5
 
-def send_email(port, value, location):
-    message: "Nicotine detected at port {}, with a volatage value of {} at {}".format(port, value, location)
+def send_email(usb_port, value, location):
+    message: "Nicotine detected at port {}, with a volatage value of {} at {}".format(usb_port, value, location)
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
         server.login(sender_email, sender_email_password)
         server.sendmail(sender_email, receiver_email, message)
