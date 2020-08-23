@@ -12,7 +12,7 @@ port = 465  # For SSL
 context = ssl.create_default_context()
 
 
-initial_voltage = 5
+initial_voltage = 0
 
 charges = {0: (1, "Mens Bathroom (Front)"), 
            1: (5, "Mens Bathroom (Rear)"), 
