@@ -4,7 +4,20 @@ import pydmm.pydmm as pd
 import smtplib, ssl
 from email.mime.text import MIMEText
 
+sender_email_password = input("Type your sender email's password and press enter: ")
+sender_email = input("Type the email you would like the emails to be sent from and press enter: ")
+receiver_email = input("Type the email you would like the emails to be sent to and press enter: ")
+port = 465  # For SSL
+# Create a secure SSL context
+context = ssl.create_default_context()
+
 initial_voltage = 5
+
+def send_email(port, value, location):
+    message: "Nicotine detected at port {}, with a volatage value of {} at {}".format(port, value, location)
+    with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
+        server.login(sender_email, sender_email_password)
+        server.sendmail(sender_email, receiver_email, message)
 
 charges = {0: (1, "Mens Bathroom (Front)"), 
            1: (5, "Mens Bathroom (Rear)"), 
@@ -27,22 +40,7 @@ except:
     
 for i in range(len(charges)):
     if charges[i][0] <= initial_voltage - 0.5:
-        print("Send email, sound silent alarm with location at port " + str(i) + " with value " + str(charges[i][0]) + " at location " + charges[i][1])
-
-        
-port = 465  # For SSL
-password = input("Type your password and press enter: ")
-
-# Create a secure SSL context
-context = ssl.create_default_context()
-
-sender_email = "my@gmail.com"
-receiver_email = "your@gmail.com"
-message: ""
-with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-    server.login(sender_email, password)
-    server.sendmail(sender_email, receiver_email, message)
-
+        send_email(str(i), str(charges[i][0]), charges[i][1])
 
 # emailFile = open("emailMsg.txt", "w")
 #   print >>email.File, "At port "
