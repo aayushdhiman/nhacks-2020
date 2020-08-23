@@ -1,13 +1,13 @@
 # nhacks-2020
 nhacks 2020 project submission
 
-# Idea
+## Idea
 Smoke detector for vapes
 
-# Function
+## Function
 Detects certain molecules/compounds released by vapes in the air and alerts staff.
 
-# Practicality 
+## Practicality 
 Deters the usage of vapes which are harmful to the human body- especially to young adults/teenagers
 
 ## Inspiration
