@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import pydmm.pydmm as pd
-import smtplib
+import smtplib, ssl
 from email.mime.text import MIMEText
 
-initial_voltage = 5;
+initial_voltage = 5
 # charges = {0: [1, "Mens Bathroom (Front)"], 1: [5, "Mens Bathroom (Rear)"], 
 #            2: [3.2, "Women's Bathroom (Front)"], 3: [-3, "Women's Bathroom (Rear)"]}
 
@@ -20,7 +20,6 @@ try:
     for i in range(len(charges)):
         read_voltage = pd.read_dmm(port=i, timeout=3)
         charges[i] = read_voltage
-        
 except:
     print("Error: Unable to detect DMM")
     
@@ -28,6 +27,19 @@ for i in range(len(charges)):
     if charges[i] <= initial_voltage - 0.5:
         print("Send email, sound silent alarm with location at port " + str(i))
         
+port = 465  # For SSL
+password = input("Type your password and press enter: ")
+
+# Create a secure SSL context
+context = ssl.create_default_context()
+
+sender_email = "my@gmail.com"
+receiver_email = "your@gmail.com"
+message: ""
+with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
+    server.login(sender_email, password)
+    server.sendmail(sender_email, receiver_email, message)
+
 
 # emailFile = open("emailMsg.txt", "w")
 #   print >>email.File, "At port "
