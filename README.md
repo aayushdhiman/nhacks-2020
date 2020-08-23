@@ -2,13 +2,10 @@
 nhacks 2020 project submission
 
 ## Idea
-Smoke detector for vapes
-
-## Function
-Detects certain molecules/compounds released by vapes in the air and alerts staff.
+Create a device that can effectively detect nicotine from vapes that can we discreetly placed in a highschool bathroom.
 
 ## Practicality 
-Deters the usage of vapes which are harmful to the human body- especially to young adults/teenagers
+The device deters the usage of vapes, which are harmful to the human body- especially to young adults/teenagers. The effects of vapes are both short term and long term, leading to cigarette addiction, lung cancer, and even death.
 
 ## Inspiration
 After spending a year at Tuscarora HS, being able to smell the cotton candy vapes throughout the entire school was a problem we should not have had to get used to. With that memory driving us, we devised an idea regarding the health and safety of students in schools, and planned to significantly decrease the amount of vapes at school. 
