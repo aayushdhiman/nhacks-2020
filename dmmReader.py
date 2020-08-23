@@ -14,6 +14,11 @@ context = ssl.create_default_context()
 
 initial_voltage = 5
 
+charges = {0: (1, "Mens Bathroom (Front)"), 
+           1: (5, "Mens Bathroom (Rear)"), 
+           2: (3.2, "Women's Bathroom (Front)"), 
+           3: (-3, "Women's Bathroom (Rear)")}
+
 
 def send_email(port, value, location):
     message = "Nicotine detected at port {}, with a volatage value of {} at {}".format(port, value, location)
@@ -21,13 +26,7 @@ def send_email(port, value, location):
         server.login(sender_email, sender_email_password)
         server.sendmail(sender_email, receiver_email, message)
 
-
-charges = {0: (1, "Mens Bathroom (Front)"), 
-           1: (5, "Mens Bathroom (Rear)"), 
-           2: (3.2, "Women's Bathroom (Front)"), 
-           3: (-3, "Women's Bathroom (Rear)")}
-
-
+        
 try:
     read_voltage = pd.read_dmm(port=0, timeout=3)
     initial_voltage = read_voltage
