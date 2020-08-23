@@ -4,11 +4,13 @@ import pydmm.pydmm as pd
 import smtplib
 from email.mime.text import MIMEText
 
-initial_voltage = 5;
-# charges = {0: [1, "Mens Bathroom (Front)"], 1: [5, "Mens Bathroom (Rear)"], 
-#            2: [3.2, "Women's Bathroom (Front)"], 3: [-3, "Women's Bathroom (Rear)"]}
+initial_voltage = 5
+charges = {0: (1, "Mens Bathroom (Front)"), 
+           1: (5, "Mens Bathroom (Rear)"), 
+           2: (3.2, "Women's Bathroom (Front)"), 
+           3: (-3, "Women's Bathroom (Rear)")}
 
-charges = {0: 1, 1: 5, 2: 3.2, 3: -3}
+# charges = {0: 1, 1: 5, 2: 3.2, 3: -3}
 
 try:
     read_voltage = pd.read_dmm(port=0, timeout=3)
@@ -25,8 +27,9 @@ except:
     print("Error: Unable to detect DMM")
     
 for i in range(len(charges)):
-    if charges[i] <= initial_voltage - 0.5:
-        print("Send email, sound silent alarm with location at port " + str(i))
+    if charges[i][0] <= initial_voltage - 0.5:
+        print("Send email, sound silent alarm with location at port " + str(i) + " with value " + str(charges[i][0]) + " at location " + charges[i][1])
+
         
 
 # emailFile = open("emailMsg.txt", "w")
