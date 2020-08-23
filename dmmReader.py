@@ -17,7 +17,7 @@ initial_voltage = 5
 charges = {0: (1, "Mens Bathroom (Front)"), 
            1: (5, "Mens Bathroom (Rear)"), 
            2: (3.2, "Women's Bathroom (Front)"), 
-           3: (-3, "Women's Bathroom (Rear)")}
+           3: (2.5, "Women's Bathroom (Rear)")}
 
 
 def send_email(port, value, location):
