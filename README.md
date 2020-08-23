@@ -1,5 +1,5 @@
 # nhacks-2020
-nhacks 2020 project submission
+The source code for the vape detector for highschool bathrooms.
 
 ## Idea
 Create a device that can effectively detect nicotine from vapes that can we discreetly placed in a highschool bathroom.
